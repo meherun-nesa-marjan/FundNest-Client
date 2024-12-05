@@ -1,8 +1,17 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { FaHandsHoldingCircle } from "react-icons/fa6";
+import { AuthContext } from "../Providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+    const { user, signOutUser } = useContext(AuthContext)
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+            })
+            .catch((error) => {
+            });
+    }
     const navItems = [
         { path: '/', element: 'Home' },
         { path: '/campaigns', element: 'All Campaign' },
@@ -12,7 +21,7 @@ const Navbar = () => {
 
     ];
     return (
-        <div>
+        <div className='py-5 lg:w-11/12 mx-auto'>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -34,19 +43,19 @@ const Navbar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-52 p-2 shadow">
                             {navItems.map(({ path, element }) => (
-                            <NavLink
-                                key={path}
-                                to={path}
-                                className={({ isActive }) =>
-                                    ` text-cyan-900 mx-3 ${isActive ? ' font-bold' : ''}`
-                                }
-                            >
-                                {element}
-                            </NavLink>
-                        ))}
+                                <NavLink
+                                    key={path}
+                                    to={path}
+                                    className={({ isActive }) =>
+                                        ` text-[#754738] mx-3 ${isActive ? ' font-bold' : ''}`
+                                    }
+                                >
+                                    {element}
+                                </NavLink>
+                            ))}
                         </ul>
                     </div>
-                    <NavLink to="/" className={'lg:text-2xl flex font-bold gap-1 text-green-900'}> <span className='py-1'></span> FundNest</NavLink>
+                    <NavLink to="/" className={'lg:text-2xl flex font-bold gap-1 text-[#754738]'}> <span className='py-1'><FaHandsHoldingCircle /></span> FundNest</NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -55,7 +64,7 @@ const Navbar = () => {
                                 key={path}
                                 to={path}
                                 className={({ isActive }) =>
-                                    ` text-cyan-900 mx-3 ${isActive ? ' font-bold' : ''}`
+                                    ` text-[#754738] text-xl mx-3 ${isActive ? ' font-bold' : ''}`
                                 }
                             >
                                 {element}
@@ -65,16 +74,49 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to={'/Login'}>
-                        <button className="btn bg-[#137257] text-white">
-                        Log in
-                        </button>
-                    </Link>
-                    <Link to={'/Login'}>
-                        <button className="btn bg-[#137257] text-white">
-                        Register
-                        </button>
-                    </Link>
+
+                    {
+                        user ? (
+
+                            <div className="flex items-center space-x-4">
+                                {user.photoURL && (
+                                    <img
+                                        src={user.photoURL || "/default-avatar.png"}
+                                        alt="Profile"
+                                        className="w-8 h-8 rounded-full"
+                                    />
+                                )}
+
+                                <button onClick={handleSignOut}
+                                    className="btn bg-[#754738] text-white">
+                                    Logout
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="">
+                                <Link to={'/Login'}>
+                                    <button className="btn bg-[#754738] text-white">
+                                        Log in
+                                    </button>
+                                </Link>
+                                <Link to={'/Register'}>
+                                    <button className="btn bg-[#754738] text-white">
+                                        Register
+                                    </button>
+                                </Link>
+                            </div>
+                        )
+                    }
+
+
+
+
+
+
+
+
+
+
 
 
                 </div>
