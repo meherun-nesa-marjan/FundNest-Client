@@ -2,9 +2,14 @@ import React, { useContext } from 'react';
 import { FaHandsHoldingCircle } from "react-icons/fa6";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext)
+    const email = user?.email
+    const name = user?.name;
+    console.log(name)
+  
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
@@ -16,8 +21,8 @@ const Navbar = () => {
         { path: '/', element: 'Home' },
         { path: '/campaigns', element: 'All Campaign' },
         { path: '/addCampaign', element: 'Add New Campaign' },
-        { path: '/myCampaign', element: 'My Campaign' },
-        { path: '/myDonations', element: 'My Donations' },
+        { path: `/myCampaign/${email}`, element: 'My Campaign' },
+        { path: `/myDonations/${email}`, element: 'My Donations' },
 
     ];
     return (
@@ -79,13 +84,21 @@ const Navbar = () => {
                         user ? (
 
                             <div className="flex items-center space-x-4">
-                                {user.photoURL && (
+                              {user.photoURL && (
+                                <a
+                                    data-tooltip-id="my-tooltip"
+                                    data-tooltip-content={name || "No name available"}
+                                >
                                     <img
                                         src={user.photoURL || "/default-avatar.png"}
                                         alt="Profile"
                                         className="w-8 h-8 rounded-full"
+                                        onError={(e) => (e.target.src = "/default-avatar.png")}
                                     />
-                                )}
+                                </a>
+                            )}
+                            <Tooltip id="my-tooltip" />
+                                
 
                                 <button onClick={handleSignOut}
                                     className="btn bg-[#754738] text-white">
@@ -107,6 +120,8 @@ const Navbar = () => {
                             </div>
                         )
                     }
+
+
 
 
 

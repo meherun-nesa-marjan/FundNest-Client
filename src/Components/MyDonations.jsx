@@ -5,7 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 const MyDonations = () => {
     const { user } = useContext(AuthContext); 
     if (!user || !user.email) {
-        return <div className='text-center text-2xl '>Please log in to Add your campaigns.</div>;
+        return <div className='text-center text-2xl '>Please log in to See your DonationsData.</div>;
     }
     const donations = useLoaderData()
 

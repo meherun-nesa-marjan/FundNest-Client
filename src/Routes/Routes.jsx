@@ -11,6 +11,7 @@ import Forgetpass from "../Components/Forgetpass";
 import Private from "../Components/Private";
 import CampaignDetails from "../Components/CampaignDetails";
 import MyDonations from "../Components/MyDonations";
+import MainHome from "../Components/MainHome";
 
 
 
@@ -24,18 +25,23 @@ const Routes = createBrowserRouter([
          element:<Home />,
          children:[
           {
+            path:"/",
+            element:<MainHome />,
+           
+          },
+          {
             path:"/campaigns",
             element: <Campaigns />,
             loader: () => fetch('http://localhost:5000/campaignData'),
           },
           {
             path:"/addCampaign",
-            element: <AddCampaign /> ,
+            element: <Private><AddCampaign /></Private> ,
           },
           {
-            path:"/myCampaign",
-            element: <MyCampain /> ,
-            loader:({params}) => fetch(`http://localhost:5000/usercampaigns/${params.email}`)
+            path:"/myCampaign/:email",
+            element: <Private><MyCampain /></Private> ,
+            loader:({params}) => fetch(`http://localhost:5000/myCampaign/${params.email}`)
           },
           {
             path:"/campaign/:id" ,
@@ -45,7 +51,7 @@ const Routes = createBrowserRouter([
           },
           {
             path:"/myDonations/:email",
-            element: <MyDonations /> ,
+            element: <Private><MyDonations /></Private> ,
             loader:({params}) => fetch(`http://localhost:5000/myDonations/${params.email}`)
            
           },

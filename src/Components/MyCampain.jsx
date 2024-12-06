@@ -4,12 +4,14 @@ import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router-dom';
 
 const MyCampaign = () => {
+    const campaigns =useLoaderData()
+    console.log(campaigns)
     const { user } = useContext(AuthContext);
     if (!user || !user.email) {
-        return <div className='text-center text-2xl '>Please log in to Add your campaigns.</div>;
+        return <div className='text-center text-2xl '>Please log in to See your campaigns.</div>;
     }
    
-    const campaigns =useLoaderData()
+    
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
