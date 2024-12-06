@@ -1,9 +1,8 @@
-import React from 'react';
+
 import { useLoaderData, Link } from 'react-router-dom';
 
 const Campaigns = () => {
     const campaignData = useLoaderData();
-
     return (
         <div className='lg:w-11/12 mx-auto py-20'>
             <h2 className="text-2xl font-bold mb-4 text-center">All Campaigns</h2>
@@ -30,7 +29,7 @@ const Campaigns = () => {
                             <td className="border border-gray-300 p-2">{campaign.name}</td>
                             <td className="border border-gray-300 p-2 text-center">
                                 <Link
-                                    to={`/campaigns/${campaign._id}`}
+                                    to={`/campaign/${campaign._id}`}
                                     className="text-blue-500 hover:underline"
                                 >
                                     View Details

@@ -4,12 +4,14 @@ import Home from "../Pages/Home";
 import Campaigns from "../Components/Campaigns";
 import AddCampaign from "../Components/AddCampaign";
 import MyCampain from "../Components/MyCampain";
-import MyDonations from "../Components/MyDonations";
+
 import Login from "../Components/Login";
 import Register from "../Components/Register";
 import Forgetpass from "../Components/Forgetpass";
 import Private from "../Components/Private";
-import CampaignDetails from "../Providers/CampaignDetails";
+import CampaignDetails from "../Components/CampaignDetails";
+import MyDonations from "../Components/MyDonations";
+
 
 
 const Routes = createBrowserRouter([
@@ -33,15 +35,19 @@ const Routes = createBrowserRouter([
           {
             path:"/myCampaign",
             element: <MyCampain /> ,
+            loader:({params}) => fetch(`http://localhost:5000/usercampaigns/${params.email}`)
           },
           {
-            path:"/campaign/:id",
-            element: <Private><CampaignDetails /></Private>,
-            loader: () => fetch('http://localhost:5000/campaignData'),
+            path:"/campaign/:id" ,
+            element: <Private> <CampaignDetails /> </Private>,
+            loader: ({params}) => fetch(`http://localhost:5000/campaign/${params.id}`)
+            
           },
           {
-            path:"/myDonations",
+            path:"/myDonations/:email",
             element: <MyDonations /> ,
+            loader:({params}) => fetch(`http://localhost:5000/myDonations/${params.email}`)
+           
           },
           {
             path:"/Login",

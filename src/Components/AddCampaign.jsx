@@ -1,11 +1,14 @@
-
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { AuthContext } from "../Providers/AuthProvider";
 const AddCampaign = () => {
+    const { user } = useContext(AuthContext)
+    if (!user || !user.email) {
+        return <div className='text-center text-2xl '>Please log in to Add your campaigns.</div>;
+    }
     const handleAddCampaign = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         const form = e.target;
-        const name = form.userName.value; 
+        const name = form.userName.value;
         const email = form.userEmail.value;
         const title = form.campaignTitle.value;
         const type = form.campaignType.value;
@@ -13,7 +16,7 @@ const AddCampaign = () => {
         const imageUrl = form.imageUrl.value;
         const minDonation = form.minDonation.value;
         const deadline = form.deadline.value;
-        const campaignData ={
+        const campaignData = {
             name,
             email,
             title,
@@ -24,18 +27,18 @@ const AddCampaign = () => {
             deadline,
         }
         // send data to server
-        fetch('http://localhost:5000/campaignData',{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+        fetch('http://localhost:5000/campaignData', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(campaignData)
+            body: JSON.stringify(campaignData)
         })
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data)
-        })
-       
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+
 
         alert(`Campaign "${title}" added successfully!`);
     };
@@ -136,8 +139,9 @@ const AddCampaign = () => {
                         type="email"
                         id="userEmail"
                         name="userEmail"
-                        placeholder="Enter your email"
+                        value={user.email || ''}
                         className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        readOnly
                         required
                     />
 
@@ -148,8 +152,9 @@ const AddCampaign = () => {
                         type="text"
                         id="userName"
                         name="userName"
-                        placeholder="Enter your name"
+                        value={user.displayName || ''}
                         className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        readOnly
                         required
                     />
 

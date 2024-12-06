@@ -10,7 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
   const from = location.state?.from || "/"
   console.log(location)
-
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const handleLogin = (e) => {
