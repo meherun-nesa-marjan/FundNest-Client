@@ -97,7 +97,7 @@ const CampaignDetails = () => {
                     <div className="card-actions justify-end">
                         <button
                             onClick={handleDonate}
-                            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+                            className="bg-[#754738] text-white px-6 py-2 rounded hover:bg-[#D9B8A7]"
                         >
                             Donate
                         </button>

@@ -23,4 +23,21 @@
     height: 100%;
     object-fit: cover;
   }
-  
+ 
+
+  /* Light Mode (default) */
+.light {
+  background-color: #f4f4f9;
+  color: #222;
+}
+
+/* Dark Mode */
+.dark {
+  background-color: #1a202c;
+  color: #f4f4f9;
+}
+
+/* Button Hover Transition */
+button:hover {
+  transition: background-color 0.3s ease-in-out;
+}

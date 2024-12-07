@@ -1,58 +1,66 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import { FaHandsHoldingCircle } from "react-icons/fa6";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
-import { Tooltip } from 'react-tooltip';
+import { Tooltip } from "react-tooltip";
 
-const Navbar = () => {
-    const { user, signOutUser } = useContext(AuthContext)
-    const email = user?.email
-    const name = user?.name;
-    console.log(name)
-  
-    const handleSignOut = () => {
-        signOutUser()
-            .then(() => {
-            })
-            .catch((error) => {
-            });
-    }
+const Navbar = ({ isDarkMode, toggleTheme }) => {
+    const { user, signOutUser } = useContext(AuthContext);
+    const email = user?.email;
+    const name = user?.displayName;
+
+    const handleSignOut = async () => {
+        try {
+            await signOutUser();
+        } catch (error) {
+            console.error("Error signing out:", error);
+        }
+    };
+
     const navItems = [
-        { path: '/', element: 'Home' },
-        { path: '/campaigns', element: 'All Campaign' },
-        { path: '/addCampaign', element: 'Add New Campaign' },
-        { path: `/myCampaign/${email}`, element: 'My Campaign' },
-        { path: `/myDonations/${email}`, element: 'My Donations' },
-
+        { path: "/", element: "Home" },
+        { path: "/campaigns", element: "All Campaign" },
+        { path: "/addCampaign", element: "Add New Campaign" },
+        { path: `/myCampaign/${email}`, element: "My Campaign" },
+        { path: `/myDonations/${email}`, element: "My Donations" },
     ];
+
     return (
-        <div className='py-5 lg:w-11/12 mx-auto'>
+        <div className="py-5 lg:w-11/12 mx-auto">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
+                    {/* Mobile Menu */}
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <button
+                            tabIndex={0}
+                            className="btn btn-ghost lg:hidden"
+                            aria-label="Open Menu"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
                                 fill="none"
                                 viewBox="0 0 24 24"
-                                stroke="currentColor">
+                                stroke="currentColor"
+                            >
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth="2"
-                                    d="M4 6h16M4 12h8m-8 6h16" />
+                                    d="M4 6h16M4 12h8m-8 6h16"
+                                />
                             </svg>
-                        </div>
+                        </button>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-52 p-2 shadow"
+                        >
                             {navItems.map(({ path, element }) => (
                                 <NavLink
                                     key={path}
                                     to={path}
                                     className={({ isActive }) =>
-                                        ` text-[#754738] mx-3 ${isActive ? ' font-bold' : ''}`
+                                        `text-[#754738] mx-3 ${isActive ? "font-bold" : ""}`
                                     }
                                 >
                                     {element}
@@ -60,8 +68,18 @@ const Navbar = () => {
                             ))}
                         </ul>
                     </div>
-                    <NavLink to="/" className={'lg:text-2xl flex font-bold gap-1 text-[#754738]'}> <span className='py-1'><FaHandsHoldingCircle /></span> FundNest</NavLink>
+                    <NavLink
+                        to="/"
+                        className="lg:text-2xl flex font-bold gap-1 text-[#754738]"
+                    >
+                        <span className="py-1">
+                            <FaHandsHoldingCircle />
+                        </span>
+                        FundNest
+                    </NavLink>
                 </div>
+
+                {/* Navbar Center */}
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navItems.map(({ path, element }) => (
@@ -69,25 +87,37 @@ const Navbar = () => {
                                 key={path}
                                 to={path}
                                 className={({ isActive }) =>
-                                    ` text-[#754738] text-xl mx-3 ${isActive ? ' font-bold' : ''}`
+                                    `text-[#754738] text-xl mx-3 ${isActive ? "font-bold" : ""}`
                                 }
                             >
                                 {element}
                             </NavLink>
                         ))}
-
                     </ul>
                 </div>
-                <div className="navbar-end">
 
-                    {
-                        user ? (
+                {/* Navbar End */}
+                <div className="navbar-end flex items-center space-x-4">
+                    {/* Theme Toggle Button */}
+                    <button
+                        onClick={toggleTheme}
+                        className="btn btn-outline bg-white border-gray-300 hover:bg-gray-200 flex items-center gap-2"
+                        aria-label="Toggle Theme"
+                    >
+                        {isDarkMode ? (
+                            <span className="text-yellow-500">☀️ Light Mode</span>
+                        ) : (
+                            <span className="text-gray-800">🌙 Dark Mode</span>
+                        )}
+                    </button>
 
-                            <div className="flex items-center space-x-4">
-                              {user.photoURL && (
+                    {user ? (
+                        <div className="flex items-center space-x-4">
+                            {user.photoURL && (
                                 <a
                                     data-tooltip-id="my-tooltip"
                                     data-tooltip-content={name || "No name available"}
+                                    className="z-[60]"
                                 >
                                     <img
                                         src={user.photoURL || "/default-avatar.png"}
@@ -98,42 +128,27 @@ const Navbar = () => {
                                 </a>
                             )}
                             <Tooltip id="my-tooltip" />
-                                
-
-                                <button onClick={handleSignOut}
-                                    className="btn bg-[#754738] text-white">
-                                    Logout
+                            <button
+                                onClick={handleSignOut}
+                                className="btn bg-[#754738] text-white"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="flex space-x-2">
+                            <Link to="/login">
+                                <button className="btn bg-[#754738] text-white">
+                                    Log in
                                 </button>
-                            </div>
-                        ) : (
-                            <div className="">
-                                <Link to={'/Login'}>
-                                    <button className="btn bg-[#754738] text-white">
-                                        Log in
-                                    </button>
-                                </Link>
-                                <Link to={'/Register'}>
-                                    <button className="btn bg-[#754738] text-white">
-                                        Register
-                                    </button>
-                                </Link>
-                            </div>
-                        )
-                    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                            </Link>
+                            <Link to="/register">
+                                <button className="btn bg-[#754738] text-white">
+                                    Register
+                                </button>
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

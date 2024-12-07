@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 
 const RunningCampaign = () => {
     const [campaigns, setCampaigns] = useState([]);
@@ -15,19 +16,48 @@ const RunningCampaign = () => {
             })
             .catch((error) => {
                 console.error("Error fetching campaigns:", error);
+                setError("Failed to load campaigns. Please try again.");
                 setLoading(false);
             });
     }, []);
+
+    const handleType = (count) => {
+        console.log(`Word typed: ${count}`);
+    }
+
+    const handleDone = () => {
+        console.log("Done with all loops!");
+    }
 
     if (loading) {
         return <div className="text-center text-2xl">Loading campaigns...</div>;
     }
 
+
     return (
-        <div className="container mx-auto p-6">
-            <h2 className="text-3xl font-bold mb-6 text-center">Running Campaigns</h2>
+        <div className="container mx-auto py-20">
+           
+            <div className="mb-6">
+            <h2 className="text-3xl font-bold text-center">Running Campaigns</h2>
+                <h1 className="text-center text-xl" style={{ paddingTop: '1rem', margin: 'auto 0', fontWeight: 'normal' }}>
+                    We believe that collective action can change the{' '}
+                    <span className="text-[#754738] font-bold">
+                        <Typewriter
+                            words={['Society', 'Community', 'World']}
+                            loop={5}
+                            cursor
+                            cursorStyle='_'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                            onLoopDone={handleDone}
+                            onType={handleType}
+                        />
+                    </span>
+                </h1>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {campaigns.slice(0, 6).map((campaign) => (
+                {campaigns.map((campaign) => (
                     <div
                         key={campaign._id}
                         className="bg-white shadow-md rounded-lg overflow-hidden"
@@ -50,7 +80,7 @@ const RunningCampaign = () => {
                             </p>
                             <button
                                 onClick={() => navigate(`/campaign/${campaign._id}`)}
-                                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                                className="mt-4 bg-[#754738] text-white px-4 py-2 rounded hover:bg-[#D9B8A7]"
                             >
                                 See More
                             </button>

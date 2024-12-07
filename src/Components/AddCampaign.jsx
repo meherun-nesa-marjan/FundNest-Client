@@ -45,7 +45,7 @@ const AddCampaign = () => {
 
     return (
         <div className="bg-bannar bg-opacity-5 bg-no-repeat bg-cover flex justify-center items-center">
-            <div className="py-10 w-4/6">
+            <div className="py-10 w-full lg:w-4/6">
                 <form
                     onSubmit={handleAddCampaign}
                     id="addCampaignForm"
