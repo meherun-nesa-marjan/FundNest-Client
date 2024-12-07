@@ -10,8 +10,7 @@ import Forgetpass from "../Components/Forgetpass";
 import Private from "../Components/Private";
 import CampaignDetails from "../Components/CampaignDetails";
 import MyDonations from "../Components/MyDonations";
-
-
+import UpdateCampaign from "../Components/UpdateCampaign";
 
 
 const Routes = createBrowserRouter([
@@ -38,9 +37,14 @@ const Routes = createBrowserRouter([
         loader:({params}) => fetch(`http://localhost:5000/myCampaign/${params.email}`)
       },
       {
+        path:"/UpdateCampaign/:id",
+        element: <Private><UpdateCampaign /></Private>,
+        loader: ({params}) => fetch(`http://localhost:5000/campaign/${params.id}`)
+      },
+      {
         path:"/campaign/:id" ,
         element: <Private> <CampaignDetails /> </Private>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaign/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/campaignData/${params.id}`)
         
       },
       {

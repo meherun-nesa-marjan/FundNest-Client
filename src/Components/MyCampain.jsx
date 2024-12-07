@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from 'sweetalert2';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const MyCampaign = () => {
-    const campaigns =useLoaderData()
-    console.log(campaigns)
+    const initialCampaigns = useLoaderData();
+    const [campaigns, setCampaigns] = useState(initialCampaigns); // Local state for campaigns
     const { user } = useContext(AuthContext);
+
     if (!user || !user.email) {
-        return <div className='text-center text-2xl '>Please log in to See your campaigns.</div>;
+        return <div className='text-center text-2xl '>Please log in to see your campaigns.</div>;
     }
-   
-    
-    const handleDelete = (id) => {
+
+    const handleDelete = (_id) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -23,33 +23,24 @@ const MyCampaign = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/campaignData/${id}`, {
-                    method: 'DELETE'
+                fetch(`http://localhost:5000/campaignData/${_id}`, {
+                    method: 'DELETE',
                 })
                     .then((res) => res.json())
                     .then((data) => {
+                        console.log('Delete API response:', data); // Log response
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your campaign has been deleted.",
                                 icon: "success"
                             });
-                        } else {
-                            Swal.fire({
-                                title: "Error!",
-                                text: "Could not delete the campaign. Try again later.",
-                                icon: "error"
-                            });
+                            setCampaigns((prevCampaigns) =>
+                                prevCampaigns.filter((campaign) => campaign._id !== _id)
+                            );
                         }
                     })
-                    .catch((error) => {
-                        console.error("Error deleting campaign:", error);
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Something went wrong. Please try again.",
-                            icon: "error"
-                        });
-                    });
+                    .catch((error) => console.error('Error deleting campaign:', error));
             }
         });
     };
@@ -57,7 +48,7 @@ const MyCampaign = () => {
     return (
         <div className='lg:w-11/12 mx-auto py-20'>
             <h2 className="text-2xl font-bold mb-4 text-center">My Campaigns</h2>
-            {campaigns.length > 0 ? (
+            {campaigns && campaigns.length > 0 ? (
                 <table className="w-full border-collapse border border-gray-300">
                     <thead>
                         <tr className="bg-gray-100">
@@ -76,12 +67,13 @@ const MyCampaign = () => {
                                 <td className="border border-gray-300 p-2">{campaign.type}</td>
                                 <td className="border border-gray-300 p-2 text-center">${campaign.minDonation}</td>
                                 <td className="border border-gray-300 p-2 text-center">
-                                    <button
-
-                                        className="bg-green-500 text-white px-4 py-1 rounded mr-2 hover:bg-green-600"
-                                    >
-                                        Update
-                                    </button>
+                                    <Link to={`/UpdateCampaign/${campaign._id}`}>
+                                        <button
+                                            className="bg-green-500 text-white px-4 py-1 rounded mr-2 hover:bg-green-600"
+                                        >
+                                            Update
+                                        </button>
+                                    </Link>
                                     <button
                                         onClick={() => handleDelete(campaign._id)}
                                         className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
@@ -101,4 +93,3 @@ const MyCampaign = () => {
 };
 
 export default MyCampaign;
-
