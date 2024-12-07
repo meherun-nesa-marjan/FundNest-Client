@@ -9,16 +9,24 @@ const UpdateCampaign = () => {
   const handleUpdateCampaign = (e) => {
     e.preventDefault();
     const form = e.target;
+        const name = form.userName.value;
+        const email = form.userEmail.value;
+        const title = form.campaignTitle.value;
+        const type = form.campaignType.value;
+        const description = form.description.value;
+        const imageUrl = form.imageUrl.value;
+        const minDonation = form.minDonation.value;
+        const deadline = form.deadline.value;
 
     const updatedCampaign = {
-      userName: form.userName.value,
-      userEmail: form.userEmail.value,
-      campaignTitle: form.campaignTitle.value,
-      campaignType: form.campaignType.value,
-      description: form.description.value,
-      imageUrl: form.imageUrl.value,
-      minDonation: form.minDonation.value,
-      deadline: form.deadline.value,
+        name,
+        email,
+        title,
+        type,
+        description,
+        imageUrl,
+        minDonation,
+        deadline,
     };
 
     Swal.fire({
@@ -32,7 +40,7 @@ const UpdateCampaign = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/campaignData/${_id}`, {
-          method: "PUT", // Correct method for updating
+          method: "PUT", 
           headers: {
             "Content-Type": "application/json",
           },
