@@ -55,11 +55,11 @@ const AddCampaign = () => {
                     id="addCampaignForm"
                     className="bg-white p-6 rounded-lg w-full"
                 >
-                    <h2 className="text-2xl font-bold mb-4 text-center">
+                    <h2 className="text-2xl font-bold mb-4 text-center text-[#754738]">
                         Add New Campaign
                     </h2>
 
-                    <label htmlFor="imageUrl" className="block font-medium mb-2">
+                    <label htmlFor="imageUrl" className="block font-medium mb-2 text-[#754738]">
                         Image URL
                     </label>
                     <input
@@ -67,11 +67,11 @@ const AddCampaign = () => {
                         id="imageUrl"
                         name="imageUrl"
                         placeholder="Enter image URL"
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         required
                     />
 
-                    <label htmlFor="campaignTitle" className="block font-medium mb-2">
+                    <label htmlFor="campaignTitle" className="block font-medium mb-2 text-[#754738]">
                         Campaign Title
                     </label>
                     <input
@@ -79,17 +79,17 @@ const AddCampaign = () => {
                         id="campaignTitle"
                         name="campaignTitle"
                         placeholder="Enter campaign title"
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         required
                     />
 
-                    <label htmlFor="campaignType" className="block font-medium mb-2">
+                    <label htmlFor="campaignType" className="block font-medium mb-2 text-[#754738]">
                         Campaign Type
                     </label>
                     <select
                         id="campaignType"
                         name="campaignType"
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         required
                     >
                         <option value="" disabled selected>
@@ -101,19 +101,19 @@ const AddCampaign = () => {
                         <option value="creative">Creative Ideas</option>
                     </select>
 
-                    <label htmlFor="description" className="block font-medium mb-2">
+                    <label htmlFor="description" className="block font-medium mb-2 text-[#754738]">
                         Description
                     </label>
                     <textarea
                         id="description"
                         name="description"
                         placeholder="Enter campaign description"
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         rows="4"
                         required
                     ></textarea>
 
-                    <label htmlFor="minDonation" className="block font-medium mb-2">
+                    <label htmlFor="minDonation" className="block font-medium mb-2 text-[#754738]">
                         Minimum Donation Amount
                     </label>
                     <input
@@ -121,22 +121,22 @@ const AddCampaign = () => {
                         id="minDonation"
                         name="minDonation"
                         placeholder="Enter minimum donation amount"
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         required
                     />
 
-                    <label htmlFor="deadline" className="block font-medium mb-2">
+                    <label htmlFor="deadline" className="block font-medium mb-2 text-[#754738]">
                         Deadline
                     </label>
                     <input
                         type="date"
                         id="deadline"
                         name="deadline"
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         required
                     />
 
-                    <label htmlFor="userEmail" className="block font-medium mb-2">
+                    <label htmlFor="userEmail" className="block font-medium mb-2 text-[#754738]">
                         User Email
                     </label>
                     <input
@@ -144,12 +144,12 @@ const AddCampaign = () => {
                         id="userEmail"
                         name="userEmail"
                         value={user.email || ''}
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         readOnly
                         required
                     />
 
-                    <label htmlFor="userName" className="block font-medium mb-2">
+                    <label htmlFor="userName" className="block font-medium mb-2 text-[#754738]">
                         User Name
                     </label>
                     <input
@@ -157,7 +157,7 @@ const AddCampaign = () => {
                         id="userName"
                         name="userName"
                         value={user.displayName || ''}
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
                         readOnly
                         required
                     />

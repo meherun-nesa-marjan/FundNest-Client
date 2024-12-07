@@ -6,27 +6,21 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
 const Mainlayouts = () => {
-    const [isDarkMode, setIsDarkMode] = useState(() => {
-        return localStorage.getItem("theme") === "dark";
-    });
+    const [dark, setDark] = React.useState(false);
 
-    useEffect(() => {
-        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-        if (isDarkMode) {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-    }, [isDarkMode]);
+    const darkModeHandler = () => {
+        setDark((prevDark) => {
+            const newDark = !prevDark;
+            document.body.classList.toggle("dark", newDark);
+            return newDark;
+        });
+    }
 
-    const toggleTheme = () => {
-        setIsDarkMode((prev) => !prev);
-    };
 
     return (
-        <div className={`min-h-screen ${isDarkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-black"}`}>
+        <div className="dark:bg-slate-600 dark:text-white!">
             <ToastContainer />
-            <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+            <Navbar darkModeHandler={darkModeHandler} dark={dark} />
             <main className="min-h-[calc(100vh-288px)]">
                 <Outlet />
             </main>

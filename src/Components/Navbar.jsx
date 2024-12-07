@@ -4,7 +4,12 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
-const Navbar = ({ isDarkMode, toggleTheme }) => {
+
+import { IoMoon } from "react-icons/io5";
+import { IoSunny } from "react-icons/io5";
+
+
+const Navbar = ({ darkModeHandler, dark }) => {
     const { user, signOutUser } = useContext(AuthContext);
     const email = user?.email;
     const name = user?.displayName;
@@ -99,16 +104,8 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
                 {/* Navbar End */}
                 <div className="navbar-end flex items-center space-x-4">
                     {/* Theme Toggle Button */}
-                    <button
-                        onClick={toggleTheme}
-                        className="btn btn-outline bg-white border-gray-300 hover:bg-gray-200 flex items-center gap-2"
-                        aria-label="Toggle Theme"
-                    >
-                        {isDarkMode ? (
-                            <span className="text-yellow-500">☀️ Light Mode</span>
-                        ) : (
-                            <span className="text-gray-800">🌙 Dark Mode</span>
-                        )}
+                    <button onClick={darkModeHandler}>
+                        {dark ? <IoSunny /> : <IoMoon />}
                     </button>
 
                     {user ? (
