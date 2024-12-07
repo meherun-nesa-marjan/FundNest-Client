@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { AuthContext } from "../Providers/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const AddCampaign = () => {
     const { user } = useContext(AuthContext)
     if (!user || !user.email) {
         return <div className='text-center text-2xl '>Please log in to Add your campaigns.</div>;
     }
+    
     const handleAddCampaign = (e) => {
+        
         e.preventDefault();
         const form = e.target;
         const name = form.userName.value;
@@ -40,7 +44,8 @@ const AddCampaign = () => {
             })
 
 
-        alert(`Campaign "${title}" added successfully!`);
+            toast.success("Add Campaign successful!");
+           
     };
 
     return (
