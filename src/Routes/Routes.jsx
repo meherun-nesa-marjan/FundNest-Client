@@ -11,12 +11,14 @@ import Private from "../Components/Private";
 import CampaignDetails from "../Components/CampaignDetails";
 import MyDonations from "../Components/MyDonations";
 import UpdateCampaign from "../Components/UpdateCampaign";
+import Error from "../Pages/Error";
 
 
 const Routes = createBrowserRouter([
     {
       path: "/",
       element: <Mainlayouts />,
+      errorElement: <Error />,
       children:[
        {
          path:"/",
