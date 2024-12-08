@@ -42,7 +42,7 @@ const AddCampaign = () => {
             .then(data => {
                 console.log(data)
             })
-            toast.success("Add Campaign successful!");
+            toast.success("Add Campaign successfully!");
             form.reset();
            
     };

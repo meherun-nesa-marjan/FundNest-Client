@@ -60,15 +60,6 @@ const CampaignDetails = () => {
                     text: "Something went wrong. Please try again.",
                 });
             });
-
-
-
-
-
-
-
-
-
             
     };
     if (!campaign) {
@@ -93,6 +84,12 @@ const CampaignDetails = () => {
                     </p>
                     <p className="text-gray-700 dark:text-white mb-4">
                         <strong>Deadline:</strong> {campaign.deadline}
+                    </p>
+                    <p className="text-gray-700 dark:text-white mb-4">
+                        <strong>User Name:</strong> {campaign.name}
+                    </p>
+                    <p className="text-gray-700 dark:text-white mb-4">
+                        <strong>Email:</strong> {campaign.email}
                     </p>
                     <div className="card-actions justify-end">
                         <button
