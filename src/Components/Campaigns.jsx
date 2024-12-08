@@ -9,7 +9,7 @@ const AllCampaigns = () => {
     // Fetch campaigns from the backend
     const fetchCampaigns = async (sort) => {
         try {
-            const response = await fetch(`http://localhost:5000/campaigns?sort=${sort}`);
+            const response = await fetch(`https://assignment-10-silk.vercel.app/campaigns?sort=${sort}`);
             const data = await response.json();
             if (data.success) {
                 setCampaigns(data.data);

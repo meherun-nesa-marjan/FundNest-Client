@@ -39,7 +39,7 @@ const UpdateCampaign = () => {
       confirmButtonText: "Yes, update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/campaignData/${_id}`, {
+        fetch(`https://assignment-10-silk.vercel.app/campaignData/${_id}`, {
           method: "PUT", 
           headers: {
             "Content-Type": "application/json",

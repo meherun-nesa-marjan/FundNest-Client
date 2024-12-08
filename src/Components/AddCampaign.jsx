@@ -31,7 +31,7 @@ const AddCampaign = () => {
             deadline,
         }
         // send data to server
-        fetch('http://localhost:5000/campaignData', {
+        fetch('https://assignment-10-silk.vercel.app/campaignData', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,13 +53,13 @@ const AddCampaign = () => {
                 <form
                     onSubmit={handleAddCampaign}
                     id="addCampaignForm"
-                    className="bg-white p-6 rounded-lg w-full"
+                    className="bg-white p-6 rounded-lg w-full dark:bg-slate-600 dark:text-white"
                 >
-                    <h2 className="text-2xl font-bold mb-4 text-center text-[#754738]">
+                    <h2 className="text-2xl font-bold mb-4 text-center text-[#754738] dark:text-white">
                         Add New Campaign
                     </h2>
 
-                    <label htmlFor="imageUrl" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="imageUrl" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         Image URL
                     </label>
                     <input
@@ -71,7 +71,7 @@ const AddCampaign = () => {
                         required
                     />
 
-                    <label htmlFor="campaignTitle" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="campaignTitle" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         Campaign Title
                     </label>
                     <input
@@ -83,13 +83,13 @@ const AddCampaign = () => {
                         required
                     />
 
-                    <label htmlFor="campaignType" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="campaignType" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         Campaign Type
                     </label>
                     <select
                         id="campaignType"
                         name="campaignType"
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183]"
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 text-[#AE9183] dark:text-white"
                         required
                     >
                         <option value="" disabled selected>
@@ -101,7 +101,7 @@ const AddCampaign = () => {
                         <option value="creative">Creative Ideas</option>
                     </select>
 
-                    <label htmlFor="description" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="description" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         Description
                     </label>
                     <textarea
@@ -113,7 +113,7 @@ const AddCampaign = () => {
                         required
                     ></textarea>
 
-                    <label htmlFor="minDonation" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="minDonation" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         Minimum Donation Amount
                     </label>
                     <input
@@ -125,7 +125,7 @@ const AddCampaign = () => {
                         required
                     />
 
-                    <label htmlFor="deadline" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="deadline" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         Deadline
                     </label>
                     <input
@@ -136,7 +136,7 @@ const AddCampaign = () => {
                         required
                     />
 
-                    <label htmlFor="userEmail" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="userEmail" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         User Email
                     </label>
                     <input
@@ -149,7 +149,7 @@ const AddCampaign = () => {
                         required
                     />
 
-                    <label htmlFor="userName" className="block font-medium mb-2 text-[#754738]">
+                    <label htmlFor="userName" className="block font-medium mb-2 text-[#754738] dark:text-white">
                         User Name
                     </label>
                     <input

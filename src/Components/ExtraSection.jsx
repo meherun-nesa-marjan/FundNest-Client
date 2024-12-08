@@ -27,7 +27,7 @@ const ExtraSection = () => {
     return (
         <div className=" py-10">
             <div className="lg:w-11/12 mx-auto">
-                <h2 className="text-3xl font-bold text-center text-[#754738] mb-8">
+                <h2 className="text-3xl font-bold text-center text-[#754738] dark:text-white mb-8">
                     Frequently Asked Questions
                 </h2>
                 <div className="space-y-4">

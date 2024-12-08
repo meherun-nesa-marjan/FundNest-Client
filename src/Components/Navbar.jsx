@@ -32,7 +32,7 @@ const Navbar = ({ darkModeHandler, dark }) => {
 
     return (
         <div className="py-5 lg:w-11/12 mx-auto">
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 dark:bg-slate-600 dark:text-white">
                 <div className="navbar-start">
                     {/* Mobile Menu */}
                     <div className="dropdown">
@@ -75,7 +75,7 @@ const Navbar = ({ darkModeHandler, dark }) => {
                     </div>
                     <NavLink
                         to="/"
-                        className="lg:text-2xl flex font-bold gap-1 text-[#754738]"
+                        className="lg:text-2xl flex font-bold gap-1 text-[#754738] dark:text-white"
                     >
                         <span className="py-1">
                             <FaHandsHoldingCircle />
@@ -92,7 +92,7 @@ const Navbar = ({ darkModeHandler, dark }) => {
                                 key={path}
                                 to={path}
                                 className={({ isActive }) =>
-                                    `text-[#754738] text-xl mx-3 ${isActive ? "font-bold" : ""}`
+                                    `text-[#754738] text-xl mx-3  ${isActive ? "font-bold" : ""} ${dark? 'dark:bg-slate-600 dark:text-white' : ''}`
                                 }
                             >
                                 {element}

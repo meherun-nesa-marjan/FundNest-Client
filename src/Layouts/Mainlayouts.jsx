@@ -18,7 +18,7 @@ const Mainlayouts = () => {
 
 
     return (
-        <div className="dark:bg-slate-600 dark:text-white!">
+        <div className="dark:bg-slate-600 dark:text-white">
             <ToastContainer />
             <Navbar darkModeHandler={darkModeHandler} dark={dark} />
             <main className="min-h-[calc(100vh-288px)]">

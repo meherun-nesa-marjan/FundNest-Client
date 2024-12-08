@@ -37,7 +37,7 @@ const CampaignDetails = () => {
             date: new Date(),
         };
 
-        fetch('http://localhost:5000/myDonations', {
+        fetch('https://assignment-10-silk.vercel.app/myDonations', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(donation),
@@ -75,23 +75,23 @@ const CampaignDetails = () => {
         return <div className="text-center text-2xl text-red-500">Campaign not found.</div>;
     }
     return (
-        <div className="container mx-auto p-6">
-            <div className="card card-compact bg-base-100  shadow-xl">
+        <div className="container mx-auto p-6 dark:bg-slate-600 dark:text-white">
+            <div className="card card-compact bg-base-100 dark:bg-slate-600 dark:text-white  shadow-xl">
                 <figure>
                     <img className='p-6'
                         src={campaign.imageUrl}
                         alt="Album" />
                 </figure>
-                <div className="card-body">
+                <div className="card-body dark:bg-slate-600 dark:text-white">
                     <h2 className="text-3xl font-bold mb-4">Campaign-tittle:{campaign.title}</h2>
-                    <p className="text-gray-700 mb-4"><strong>Campaign-description:</strong>{campaign.description}</p>
-                    <p className="text-gray-700 mb-4">
+                    <p className="text-gray-700 dark:text-white mb-4"><strong>Campaign-description:</strong>{campaign.description}</p>
+                    <p className="text-gray-700 dark:text-white mb-4">
                         <strong>Type:</strong> {campaign.type}
                     </p>
-                    <p className="text-gray-700 mb-4">
+                    <p className="text-gray-700 dark:text-white mb-4">
                         <strong>Minimum Donation:</strong> ${campaign.minDonation}
                     </p>
-                    <p className="text-gray-700 mb-4">
+                    <p className="text-gray-700 dark:text-white mb-4">
                         <strong>Deadline:</strong> {campaign.deadline}
                     </p>
                     <div className="card-actions justify-end">

@@ -27,7 +27,7 @@ const Routes = createBrowserRouter([
       {
         path:"/campaigns",
         element: <Campaigns />,
-        loader: () => fetch('http://localhost:5000/campaignData'),
+        loader: () => fetch('https://assignment-10-silk.vercel.app/campaignData'),
       },
       {
         path:"/addCampaign",
@@ -36,23 +36,23 @@ const Routes = createBrowserRouter([
       {
         path:"/myCampaign/:email",
         element: <Private><MyCampain /></Private> ,
-        loader:({params}) => fetch(`http://localhost:5000/myCampaign/${params.email}`)
+        loader:({params}) => fetch(`https://assignment-10-silk.vercel.app/myCampaign/${params.email}`)
       },
       {
         path:"/UpdateCampaign/:id",
         element: <Private><UpdateCampaign /></Private>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaign/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-10-silk.vercel.app/campaign/${params.id}`)
       },
       {
         path:"/campaign/:id" ,
         element: <Private> <CampaignDetails /> </Private>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaignData/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-10-silk.vercel.app/campaignData/${params.id}`)
         
       },
       {
         path:"/myDonations/:email",
         element: <Private><MyDonations /></Private> ,
-        loader:({params}) => fetch(`http://localhost:5000/myDonations/${params.email}`)
+        loader:({params}) => fetch(`https://assignment-10-silk.vercel.app/myDonations/${params.email}`)
        
       },
       {

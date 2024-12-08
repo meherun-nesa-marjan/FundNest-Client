@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'bannar': "url('./images/bg.jpg')",
-        'bannar1': "url('./images/bannar4.jpg')",
-        'bannar2': "url('./images/bannar5.jpg')",
-        'bannar3': "url('./images/bannar3.jpg')",
+        'bannar': "url('../images/bg.jpg')",
+        'bannar1': "url('../images/bannar4.jpg')",
+        'bannar2': "url('../images/bannar5.jpg')",
+        'bannar3': "url('../images/bannar3.jpg')",
 
         
       }

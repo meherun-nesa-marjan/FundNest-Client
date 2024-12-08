@@ -8,7 +8,7 @@ const RunningCampaign = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/runningCampaigns")
+        fetch("https://assignment-10-silk.vercel.app/runningCampaigns")
             .then((res) => res.json())
             .then((data) => {
                 setCampaigns(data);
@@ -35,7 +35,7 @@ const RunningCampaign = () => {
 
 
     return (
-        <div className="container mx-auto py-20">
+        <div className="lg:w-10/12 w-fullcontainer mx-auto py-20 ">
            
             <div className="mb-6">
             <h2 className="text-3xl font-bold text-center">Running Campaigns</h2>
@@ -56,11 +56,11 @@ const RunningCampaign = () => {
                     </span>
                 </h1>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6">
                 {campaigns.map((campaign) => (
                     <div
                         key={campaign._id}
-                        className="bg-white shadow-md rounded-lg overflow-hidden"
+                        className="bg-white dark:bg-slate-600 dark:text-white shadow-md rounded-lg overflow-hidden"
                     >
                         <img
                             src={campaign.imageUrl || "https://via.placeholder.com/300"}
@@ -68,14 +68,14 @@ const RunningCampaign = () => {
                             className="w-full h-48 object-cover"
                         />
                         <div className="p-4">
-                            <h3 className="text-xl font-bold mb-2">{campaign.title}</h3>
-                            <p className="text-gray-700 mb-2">
+                            <h3 className="text-xl font-bold dark:text-white  mb-2">{campaign.title}</h3>
+                            <p className="text-gray-700 mb-2 dark:text-white ">
                                 Type: <strong>{campaign.type}</strong>
                             </p>
-                            <p className="text-gray-700 mb-2">
+                            <p className="text-gray-700 dark:text-white  mb-2">
                                 Minimum Donation: <strong>${campaign.minDonation}</strong>
                             </p>
-                            <p className="text-gray-700">
+                            <p className="text-gray-700 dark:text-white ">
                                 Deadline: {new Date(campaign.deadline).toLocaleDateString()}
                             </p>
                             <button
