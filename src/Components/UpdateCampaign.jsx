@@ -50,10 +50,14 @@ const UpdateCampaign = () => {
           .then((data) => {
             if (data.modifiedCount > 0) {
               Swal.fire("Updated!", "Your campaign has been updated.", "success");
+             
+
             } else {
               Swal.fire("No Changes", "No changes were made to the campaign.", "info");
             }
+            
           })
+          
           .catch((error) => {
             console.error("Error updating campaign:", error);
             Swal.fire("Error", "Could not update the campaign. Please try again.", "error");
