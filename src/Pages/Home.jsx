@@ -3,6 +3,8 @@ import Bannar from '../Components/Bannar';
 import RunningCampaign from '../Components/RunningCampaign';
 import Extra from '../Components/Extra';
 import ExtraSection from '../Components/ExtraSection';
+import BlogSection from '../Components/BlogSection';
+import NewsletterSection from '../Components/NewsletterSection';
 
 const Home = () => {
     return (
@@ -11,6 +13,8 @@ const Home = () => {
              <RunningCampaign /> 
              <Extra />
              <ExtraSection />
+             <BlogSection />
+             <NewsletterSection />
           </div>
       );
     

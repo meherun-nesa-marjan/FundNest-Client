@@ -12,6 +12,9 @@ import CampaignDetails from "../Components/CampaignDetails";
 import MyDonations from "../Components/MyDonations";
 import UpdateCampaign from "../Components/UpdateCampaign";
 import Error from "../Pages/Error";
+import About from "../Pages/About";
+import Contact from "../Pages/Contact";
+import Support from "../Pages/Support";
 
 
 const Routes = createBrowserRouter([
@@ -28,6 +31,18 @@ const Routes = createBrowserRouter([
         path:"/campaigns",
         element: <Campaigns />,
         loader: () => fetch('https://assignment-10-silk.vercel.app/campaignData'),
+      },
+      {
+        path:"/About",
+        element:<About />
+      },
+      {
+        path:"/Contact",
+        element:<Contact />
+      },
+      {
+        path:"/Support",
+        element:<Support />
       },
       {
         path:"/addCampaign",

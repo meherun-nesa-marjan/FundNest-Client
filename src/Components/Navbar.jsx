@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaHandsHoldingCircle } from "react-icons/fa6";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
@@ -10,10 +10,19 @@ import { IoSunny } from "react-icons/io5";
 
 
 const Navbar = ({ darkModeHandler, dark }) => {
+    const [isScrolled, setIsScrolled] = useState(false);
     const { user, signOutUser } = useContext(AuthContext);
     const email = user?.email;
     const name = user?.displayName;
-
+    useEffect(() => {
+        const handleScroll = () => {
+          setIsScrolled(window.scrollY > 0);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
     const handleSignOut = async () => {
         try {
             await signOutUser();
@@ -22,17 +31,23 @@ const Navbar = ({ darkModeHandler, dark }) => {
         }
     };
 
+   
+
+   
     const navItems = [
         { path: "/", element: "Home" },
         { path: "/campaigns", element: "All Campaign" },
-        { path: "/addCampaign", element: "Add New Campaign" },
-        { path: `/myCampaign/${email}`, element: "My Campaign" },
-        { path: `/myDonations/${email}`, element: "My Donations" },
+        { path: "/About", element: "About Us" },
+        { path: '/Contact', element: "Contact" },
+        { path: '/Support', element: "Support" },
     ];
 
     return (
-        <div className="py-5 lg:w-11/12 mx-auto">
-            <div className="navbar bg-base-100 dark:bg-slate-600 dark:text-white">
+   <div className={`navbar dark:bg-slate-600 bg-[#FDF4E3] sticky top-0 z-50 transition-shadow duration-300 ${
+    isScrolled ? 'shadow-md' : ''
+  }`}>
+         <div className="py-2 bg-[#FDF4E3] lg:w-11/12 dark:bg-slate-600 mx-auto">
+            <div className="navbar  dark:bg-slate-600 dark:text-white">
                 <div className="navbar-start">
                     {/* Mobile Menu */}
                     <div className="dropdown">
@@ -111,6 +126,8 @@ const Navbar = ({ darkModeHandler, dark }) => {
                     {user ? (
                         <div className="flex items-center space-x-4">
                             {user.photoURL && (
+                                <div className="dropdown dropdown-bottom">
+                                <div tabIndex={0} role="button" className=" m-1">
                                 <a
                                     data-tooltip-id="my-tooltip"
                                     data-tooltip-content={name || "No name available"}
@@ -123,6 +140,15 @@ const Navbar = ({ darkModeHandler, dark }) => {
                                         onError={(e) => (e.target.src = "/default-avatar.png")}
                                     />
                                 </a>
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[50] w-52 p-2 shadow">
+                                  <li><Link to={'/addCampaign'}>Add New Campaign</Link></li>
+                                  <li><Link to={`/myCampaign/${email}`}>My Campaign</Link></li>
+                                  <li><Link to={`/myDonations/${email}`}></Link></li>
+                                  
+                                </ul>
+                              </div>
+                              
                             )}
                             <Tooltip id="my-tooltip" />
                             <button
@@ -149,6 +175,7 @@ const Navbar = ({ darkModeHandler, dark }) => {
                 </div>
             </div>
         </div>
+   </div>
     );
 };
 

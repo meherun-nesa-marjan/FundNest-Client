@@ -35,7 +35,7 @@ const RunningCampaign = () => {
 
 
     return (
-        <div className="lg:w-10/12 w-fullcontainer mx-auto py-20 ">
+        <div className="lg:w-10/12 w-fullcontainer mx-auto py-8">
            
             <div className="mb-6">
             <h2 className="text-3xl font-bold text-center">Running Campaigns</h2>
@@ -56,7 +56,7 @@ const RunningCampaign = () => {
                     </span>
                 </h1>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-6">
                 {campaigns.map((campaign) => (
                     <div
                         key={campaign._id}

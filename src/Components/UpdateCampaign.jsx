@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateCampaign = () => {
-  const campaign = useLoaderData(); // Ensure campaign data is loaded correctly
+  const campaign = useLoaderData();
   const { _id, name, email, title, type, description, imageUrl, minDonation, deadline } = campaign;
 
   const handleUpdateCampaign = (e) => {

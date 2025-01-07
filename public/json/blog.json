@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "title": "The Power of Giving: Why Donations Matter",
+      "summary": "Discover the impact of small contributions and how they can create a ripple effect of kindness.",
+      "imageUrl": "/images/blog1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "How Crowdfunding Is Changing The World",
+      "summary": "Crowdfunding has revolutionized the way we fund projects and support causes. Learn more about its rise.",
+      "imageUrl": "/images/blog2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Tips for Successful Campaigns",
+      "summary": "Launching a campaign can be daunting, but with the right tools and strategies, you can succeed.",
+      "imageUrl": "/images/blog3.jpg"
+    }
+  ]
+  

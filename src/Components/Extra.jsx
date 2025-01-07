@@ -2,7 +2,7 @@ import React from 'react';
 
 const Extra = () => {
     return (
-        <div className="bg-[#F4F2EC] py-10 dark:bg-slate-600 dark:text-white">
+        <div className="bg-[#F4F2EC] py-8 dark:bg-slate-600 dark:text-white">
             <div className="lg:w-11/12 mx-auto">
                 <div className="flex flex-col-reverse lg:flex-row items-center relative">
                     
