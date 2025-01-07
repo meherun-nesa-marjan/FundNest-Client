@@ -18,10 +18,10 @@ const Support = () => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here
+      
         console.log(formData);
         setIsSubmitted(true);
-        // Optionally, reset form after submission
+       
         setFormData({
           name: "",
           email: "",

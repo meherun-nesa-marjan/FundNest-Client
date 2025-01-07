@@ -40,6 +40,7 @@ const Navbar = ({ darkModeHandler, dark }) => {
         { path: "/About", element: "About Us" },
         { path: '/Contact', element: "Contact" },
         { path: '/Support', element: "Support" },
+        { path: '/Blog', element: "Blog" },
     ];
 
     return (

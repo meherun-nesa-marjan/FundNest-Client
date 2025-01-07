@@ -15,13 +15,15 @@ import Error from "../Pages/Error";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Support from "../Pages/Support";
+import Blogs from "../Pages/Blogs";
+import BlogDetails from "../Pages/BlogDetails";
 
 
 const Routes = createBrowserRouter([
     {
       path: "/",
       element: <Mainlayouts />,
-      errorElement: <Error />,
+     // errorElement: <Error />,
       children:[
        {
          path:"/",
@@ -44,6 +46,15 @@ const Routes = createBrowserRouter([
         path:"/Support",
         element:<Support />
       },
+      {
+        path:"/Blog",
+        element:<Blogs />
+      },
+      {
+        path:"/blogs/:id",
+        element:<BlogDetails />
+      },
+      
       {
         path:"/addCampaign",
         element: <Private><AddCampaign /></Private> ,
