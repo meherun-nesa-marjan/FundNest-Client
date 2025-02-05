@@ -52,7 +52,9 @@ A platform to bring ideas to life through collective support and collaboration. 
 ```npm install```
 4️⃣ Create a .env file and add your Firebase configuration.
 5️⃣ Start the development server:
-```npm run dev
+<br />
+```npm
+run dev
 ```
 
 
