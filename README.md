@@ -36,6 +36,7 @@ A platform to bring ideas to life through collective support and collaboration. 
 
 ---
 ## 🛠️ Technologies Used
+
 **Frontend:** React, Tailwind CSS, DaisyUI
 **Backend & Database:** Firebase, MongoDb
 **Authentication:** Firebase Authentication
