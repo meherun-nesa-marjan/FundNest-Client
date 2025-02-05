@@ -53,9 +53,8 @@ A platform to bring ideas to life through collective support and collaboration. 
 4️⃣ Create a .env file and add your Firebase configuration.
 5️⃣ Start the development server:
 <br />
-```npm
-run dev
-```
+```bash
+npm run dev
 
 
 Visit our live site and join the journey to turn ideas into reality: [FundNest](https://my-new-assingment-10.web.app/)  
