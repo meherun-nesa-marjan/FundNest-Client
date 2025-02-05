@@ -56,5 +56,14 @@ A platform to bring ideas to life through collective support and collaboration. 
 ```bash
 npm run dev
 
+Use yarn to build the project and run.
+
+```sh
+yarn
+yarn build
+yarn start
+```
+
+
 
 Visit our live site and join the journey to turn ideas into reality: [FundNest](https://my-new-assingment-10.web.app/)  
