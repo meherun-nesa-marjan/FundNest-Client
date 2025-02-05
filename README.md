@@ -43,7 +43,7 @@ A platform to bring ideas to life through collective support and collaboration. 
 
 ---
 ## Get Started  
-- Follow these steps to set up the project locally
+- Follow these steps to set up the project locally<br>
 1️⃣ Clone the repository:
 
 ```sh
