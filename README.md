@@ -45,25 +45,24 @@ A platform to bring ideas to life through collective support and collaboration. 
 ## Get Started  
 - Follow these steps to set up the project locally
 1️⃣ Clone the repository:
-<br>
+
 ```sh
 https://github.com/meherun-nesa-marjan/FundNest-Client.git
 ```
 2️⃣ Navigate to the project directory:
-<br>
+
 ```sh
 cd fundnest
 ```
 3️⃣ Install dependencies:
-<br>
+
 ```sh
 npm install
 ```
 4️⃣ Create a .env file and add your Firebase configuration.
 5️⃣ Start the development server:
-<br>
 ```sh
-npm run dev
+npm install
 ```
 
 
