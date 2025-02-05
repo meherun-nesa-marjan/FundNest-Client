@@ -35,7 +35,25 @@ A platform to bring ideas to life through collective support and collaboration. 
 4. **Track Progress:** Monitor funding goals and achievements in real-time.  
 
 ---
+## 🛠️ Technologies Used
+**Frontend:** React, Tailwind CSS, DaisyUI
+**Backend & Database:** Firebase, MongoDb
+**Authentication:** Firebase Authentication
+**State Management & Routing:** React Router
 
+---
 ## Get Started  
+- Follow these steps to set up the project locally
+1️⃣ Clone the repository:
+```https://github.com/meherun-nesa-marjan/FundNest-Client.git```
+2️⃣ Navigate to the project directory:
+```cd fundnest```
+3️⃣ Install dependencies:
+```npm install```
+4️⃣ Create a .env file and add your Firebase configuration.
+5️⃣ Start the development server:
+```npm run dev
+```
+
 
 Visit our live site and join the journey to turn ideas into reality: [FundNest](https://my-new-assingment-10.web.app/)  
