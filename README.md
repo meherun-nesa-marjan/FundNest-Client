@@ -36,11 +36,10 @@ A platform to bring ideas to life through collective support and collaboration. 
 
 ---
 ## 🛠️ Technologies Used
-
-**Frontend:** React, Tailwind CSS, DaisyUI
-**Backend & Database:** Firebase, MongoDb
-**Authentication:** Firebase Authentication
-**State Management & Routing:** React Router
+   - **Frontend:** React, Tailwind CSS, DaisyUI
+   - **Backend & Database:** Firebase, MongoDb
+   - **Authentication:** Firebase Authentication
+   - **State Management & Routing:** React Router
 
 ---
 ## Get Started  
@@ -66,6 +65,18 @@ npm install
 npm install
 ```
 
+## 📦 Dependencies
+```json
+"dependencies": {
+  "react": "^18.2.0",
+  "react-router-dom": "^6.14.1",
+  "firebase": "^9.6.1",
+  "tailwindcss": "^3.0.0",
+  "daisyui": "^2.51.0",
+  "axios": "^1.3.0"
+}
+
+```
 
 
 Visit our live site and join the journey to turn ideas into reality: [FundNest](https://my-new-assingment-10.web.app/)  
