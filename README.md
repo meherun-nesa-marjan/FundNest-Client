@@ -59,10 +59,10 @@ cd fundnest
 ```sh
 npm install
 ```
-4️⃣ Create a .env file and add your Firebase configuration.
+4️⃣ Create a .env file and add your Firebase configuration.<br>
 5️⃣ Start the development server:
 ```sh
-npm install
+npm run dev
 ```
 
 ## 📦 Dependencies
